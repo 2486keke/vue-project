@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<my-header :todo="fmessage" :todo-two="fdate" :todo-there="ffuji">
+			</my-header>
+			<div v-if="flag">
+			</div>
+		</div>
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component("my-header", {
+			name: "my-header",
+			template: `
+					<div class="my-header">
+						<div class="my-header-left">
+							<a @click="headerMe">我的</a>
+							<a>首页</a>
+							
+							{{ come111 }}
+						</div>
+						<div class="my-header-right">
+							<a v-on:click="$emit('header-login',come)">登录</a>
+							<a >注册</a>
+							
+						</div>
+						{{ todo }} </br>
+						{{ todoTwo }}</br>
+						{{ todoThere }}</br>
+					</div>
+				`,
+			data: function() {
+				return {
+					come111: "aaaaaaaaa",
+//					ffuji:""
+					zi:""
+				}
+			},
+			methods: {
+				headerMe: function() {
+					this.come111 = "22222222222222"
+				},
+				ffuji:function(){
+					this.zi=this.ffuji,
+					this.come111=this.zi
+				}
+			},
+			props: {
+				todo: {
+					type: String,
+					default: ""
+				},
+				todoTwo: {
+					type: Number,
+					default: 0
+				},
+				todoThere: {
+					type: String
+				},
+				come: "ssss"
+			},
+			watch: {
+
+			}
+		})
+		var vm = new Vue({
+			el: "#wrap",
+			data: function() {
+				return {
+					fmessage: "1111事实上是",
+					fdate: 201942,
+					ffuji: "我是父級元素",
+					flag: true
+				}
+			},
+			watch: {
+				//				flag: function(newFlag, oldFlagk) {
+				//					console.log(newFlag, oldFlagk)
+				//				}
+			}
+		})
+	</script>
+
+</html>
